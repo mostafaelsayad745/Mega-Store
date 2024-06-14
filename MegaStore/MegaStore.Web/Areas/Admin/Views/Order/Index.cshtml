@@ -1,0 +1,46 @@
+﻿@model IEnumerable<OrderHeader> 
+
+@{
+    ViewBag.PageTitle = "Orders Management";
+    ViewBag.CardTitle = "View Orders";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<table id="orderTable" class="table table-hover w-100">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>OrderStatus</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var orderHeader in Model)
+        {
+            <tr>
+                <td>@orderHeader.Id</td>
+                <td>@orderHeader.Name</td>
+                <td>@orderHeader.Phone</td>
+                <td>@orderHeader.ApplicationUser.Email</td>
+                <td>@orderHeader.OrderStatus</td>
+                <td>@orderHeader.TotalPrice</td>
+                <td>
+                    <a href="/Admin/Order/Details?orderid=@orderHeader.Id" class="btn btn-warning text-white" style="cursor:pointer; width:auto;">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#orderTable').DataTable();
+        });
+    </script>
+}

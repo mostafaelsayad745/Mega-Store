@@ -1,0 +1,193 @@
+﻿@model ShoppingCartVM
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping Cart</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="~/shoppingcart/assets/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+	<style>
+		body {
+			font-family: 'Montserrat', sans-serif;
+			background-color: #333;
+			color: #fff;
+		}
+
+		.btn:hover {
+			opacity: 0.8;
+		}
+
+		.page {
+			padding: 50px 0;
+		}
+
+		.shopping-cart {
+			padding-bottom: 50px;
+		}
+
+			.shopping-cart .block-heading {
+				padding: 30px 0;
+				margin-bottom: 40px;
+				text-align: center;
+			}
+
+				.shopping-cart .block-heading h2 {
+					text-transform: uppercase;
+					font-weight: bold;
+					color: #fff;
+				}
+
+			.shopping-cart .dark .block-heading {
+				color: #fff;
+			}
+
+			.shopping-cart .items {
+				margin: 0 auto;
+				max-width: 800px;
+			}
+
+				.shopping-cart .items .product {
+					margin-bottom: 20px;
+					background-color: #444;
+					border-radius: 10px;
+					padding: 15px;
+				}
+
+					.shopping-cart .items .product .image {
+						width: 100%;
+						border-radius: 10px;
+					}
+
+					.shopping-cart .items .product .info .product-name a {
+						color: #fff;
+						font-weight: bold;
+						font-size: 1.1rem;
+					}
+
+					.shopping-cart .items .product .info .product-name .product-info .value {
+						font-weight: normal;
+					}
+
+					.shopping-cart .items .product .info .quantity .btn-group .btn {
+						background-color: #fff;
+						color: #333;
+					}
+
+					.shopping-cart .items .product .info .quantity span {
+						color: #fff;
+						font-size: 1.2rem;
+						margin: 0 10px;
+					}
+
+					.shopping-cart .items .product .info .price span {
+						color: #fff;
+						font-size: 1.2rem;
+						font-weight: bold;
+					}
+
+			.shopping-cart .summary {
+				background-color: #444;
+				border-radius: 10px;
+				padding: 15px;
+				color: #fff;
+			}
+
+				.shopping-cart .summary h3 {
+					border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+					padding-bottom: 10px;
+					margin-bottom: 20px;
+					color: #fff;
+					font-weight: bold;
+				}
+
+				.shopping-cart .summary .summary-item .text {
+					color: #fff;
+				}
+
+				.shopping-cart .summary .summary-item .price {
+					color: #fff;
+				}
+
+				.shopping-cart .summary .btn {
+					background-color: #007bff;
+					color: #fff;
+					font-weight: bold;
+				}
+	</style>
+</head>
+<body>
+	<main class="page">
+		<section class="shopping-cart dark">
+			<div class="container">
+				<div class="block-heading">
+					<h2 class="text-dark">Shopping Cart</h2>
+				</div>
+				<div class="content">
+					<div class="row">
+						<div class="col-md-12 col-lg-8">
+							<div class="items">
+								@foreach (var item in Model.CartsList)
+								{
+									<div class="product">
+										<div class="row">
+											<div class="col-md-3">
+												<img class="img-fluid mx-auto d-block image" src="~/@item.Product.Img">
+											</div>
+											<div class="col-md-8">
+												<div class="info">
+													<div class="row">
+														<div class="col-md-5 product-name">
+															<div class="product-name">
+																<a href="#">@item.Product.Name</a>
+																<div class="product-info">
+																	<div>Description: <span class="value">@item.Product.Description</span></div>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-4 quantity">
+															<label for="quantity">Quantity:</label>
+															<div class="btn-group" role="group">
+																<a class="btn btn-primary" asp-action="Plus" asp-route-cartid="@item.Id" aria-label="Increase quantity">
+																	<i class="fas fa-plus"></i>
+																</a>
+																<span class="btn btn-light disabled" aria-disabled="true">@item.Count</span>
+																<a class="btn btn-secondary" asp-action="Minus" asp-route-cartid="@item.Id" aria-label="Decrease quantity">
+																	<i class="fas fa-minus"></i>
+																</a>
+															</div>
+														</div>
+														<div class="col-md-1">
+															<a asp-action="Remove" asp-route-cartid="@item.Id" class="btn btn-danger" aria-label="Remove item">
+																<i class="fas fa-trash"></i>
+															</a>
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								}
+							</div>
+						</div>
+						<div class="col-md-12 col-lg-4">
+							<div class="summary">
+								<h3>Summary</h3>
+								<div class="summary-item"><span class="text">Total</span><span class="price">$@Model.TotalCarts.ToString()</span></div>
+								<a class="btn btn-primary btn-lg btn-block text-white" asp-controller="Cart" asp-action="Summary">Checkout</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

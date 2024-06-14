@@ -1,0 +1,132 @@
+﻿/* General body styling */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Styling for the shopping cart section */
+.shopping-cart {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.block-heading {
+    padding-top: 50px;
+    text-align: center;
+}
+
+    .block-heading h2 {
+        color: #333;
+    }
+
+/* Product list and items */
+.items .product {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.product-name a {
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.product-info {
+    font-size: 14px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Quantity and price styling */
+.quantity .btn-group,
+.summary {
+    display: flex;
+    align-items: center;
+}
+
+.quantity .btn {
+    padding: 5px 10px;
+    color: #fff;
+}
+
+.quantity span {
+    padding: 0 20px;
+}
+
+.price {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Summary and checkout button */
+.summary {
+    text-align: center;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+    .summary h3 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+.summary-item {
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+    .btn-danger:hover {
+        color: #fff;
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+.btn-lg {
+    padding: 10px 30px;
+    font-size: 20px;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .btn-group,
+    .summary {
+        flex-direction: column;
+    }
+
+    .quantity span {
+        margin: 10px 0;
+    }
+}
