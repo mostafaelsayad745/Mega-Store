@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MegaStore.Entities.Models
 {
-    [Table("Categories")]
+   
     public class Category
     {
         [Key]
