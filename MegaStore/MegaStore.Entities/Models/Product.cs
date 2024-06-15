@@ -3,12 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MegaStore.Entities.Models
 {
+    [Table("Products")]
     public class Product
     {
         [Key]
@@ -25,6 +27,7 @@ namespace MegaStore.Entities.Models
         [DisplayName("Category")]
         public int CategoryId { get; set; }
         [ValidateNever]
+        [ForeignKey("CategoryId")]
         public Category Category { get; set; }
     }
 }
